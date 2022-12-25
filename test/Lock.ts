@@ -30,11 +30,7 @@ describe("Lock", function () {
         Raffle = await ethers.getContract("Raffle")
     })
 
-    it("Test", async function () {
-        console.log(Raffle.address)
-        console.log(deployer)
-        console.log(typeof deployer)
-    })
+    it("Test", async function () {})
 
     // describe("Deployment", function () {
     //   it("Should set the right unlockTime", async function () {

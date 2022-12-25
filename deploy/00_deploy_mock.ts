@@ -13,8 +13,6 @@ const deployMock: DeployFunction = async ({ deployments, getNamedAccounts }) => 
             args: [100000, 100000],
             log: false,
         })
-
-        console.log(result.address)
     }
 }
 

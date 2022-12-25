@@ -25,7 +25,6 @@ const deployRaffle: DeployFunction = async function ({ deployments, getNamedAcco
         log: true,
         waitConfirmations: 6,
     })
-    console.log(raffle)
 }
 export default deployRaffle
 
