@@ -24,4 +24,4 @@ const deployMock: DeployFunction = async ({ deployments, getNamedAccounts }) => 
 
 export default deployMock
 
-deployMock.tags = ["DeployMocks"]
+deployMock.tags = ["all", "mocks"]
