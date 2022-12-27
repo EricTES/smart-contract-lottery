@@ -62,3 +62,16 @@ The nodes on the blockchain preiodically runs the checkUpKeep function to check 
 ## Data of type Bytes
 
 If you see a data type of bytes, it means it can be anything even a function. How cool !!!
+
+## VRFCoordinatorV2Mock
+
+In the actual Etheruem blockchain, the VRF Service does the calculation for the random number. However in a local network, we don't have the VRF Service, therefore we just choose the random numbers ourselves in one of the functions of the VRFCoordinatorV2Mock. This is just for the sake of being able to test.
+
+## Manipulating local blockchain
+
+If you go to the docs at this link https://hardhat.org/hardhat-network/docs/reference, you'll find at the #special-testing/debugging-methods methods you can call to manipulate your local network.
+
+example:
+await network.provider.send("evm_increaseTime", [interval + 1]) - moves the time fowards by the specified value in the square brackets
+
+await network.provider.send("evm_mine", []) - mine one block in the blockchain
