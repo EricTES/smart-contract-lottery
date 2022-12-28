@@ -49,6 +49,7 @@ const deployRaffle: DeployFunction = async function ({ deployments, getNamedAcco
     })
 
     // Ensure the Raffle contract is a valid consumer of the VRFCoordinatorV2Mock contract.
+    // This is using the programatic was of subscribing. Only for local network
     if (developmentChain.includes(network.name)) {
         const vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
         await vrfCoordinatorV2Mock.addConsumer(subscriptionId, raffle.address)

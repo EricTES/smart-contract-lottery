@@ -62,9 +62,9 @@ import { developmentChain, networkConfig } from "../../helper-hardhat-config"
                   // We pretend to be a Chainlink Keeper
                   await raffle.performUpkeep([])
 
-                  //   await expect(raffle.enterRaffle({ value: entraceFee })).to.be.revertedWith(
-                  //       "Raffle__NotOpen"
-                  //   )
+                  await expect(raffle.enterRaffle({ value: entraceFee })).to.be.revertedWith(
+                      "Raffle__NotOpen"
+                  )
               })
           })
       })
