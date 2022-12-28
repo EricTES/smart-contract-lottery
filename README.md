@@ -75,3 +75,18 @@ example:
 await network.provider.send("evm_increaseTime", [interval + 1]) - moves the time fowards by the specified value in the square brackets
 
 await network.provider.send("evm_mine", []) - mine one block in the blockchain
+
+## Call static
+
+.callStatic allows us to call a contract function without sending a transaction. This is for the purpose of just getting the returned value when we are testing.
+
+e.g:
+await raffle.checkUpkeep([]) --> await raffle.callStatic.checkUpkeep([])
+
+## Blank bytes object
+
+If you want to send a blank bytes object into a parameter just use "0x"
+
+## Listening to events emit
+
+By using contract.once("event_name", function()) , we can execute a function when we hear the event being emited
