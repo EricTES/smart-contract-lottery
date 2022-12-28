@@ -44,6 +44,9 @@ const config: HardhatUserConfig = {
         outputFile: "gas-report.txt",
         noColors: true,
     },
+    mocha: {
+        timeout: 200000, // 200 seconds max
+    },
 }
 
 export default config
