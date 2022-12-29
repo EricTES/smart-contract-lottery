@@ -5,10 +5,10 @@ import "hardhat-deploy"
 import "solidity-coverage"
 import "hardhat-gas-reporter"
 import "hardhat-contract-sizer"
-import "dotenv"
+import "dotenv/config"
 
-const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL || "0xkey"
-const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY || "0xkey"
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL || ""
+const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY || "0x"
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
 const config: HardhatUserConfig = {
@@ -21,8 +21,8 @@ const config: HardhatUserConfig = {
             blockConfirmations: 1,
         },
         goerli: {
-            url: "https://eth-goerli.g.alchemy.com/v2/K9hxrDpLKuRSuXFBA2B_C7LInlGEc6ws",
-            accounts: ["0x23e5d8736d371d3624c3238ccf5c651c14c1a13c7edac7930aef6d7323b58c83"],
+            url: GOERLI_RPC_URL,
+            accounts: [GOERLI_PRIVATE_KEY],
             chainId: 5,
         },
     },

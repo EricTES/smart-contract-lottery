@@ -89,4 +89,8 @@ If you want to send a blank bytes object into a parameter just use "0x"
 
 ## Listening to events emit
 
-By using contract.once("event_name", function()) , we can execute a function when we hear the event being emited
+By using contract.once("event_name", function()) , we can execute a function when we hear the event being emited.
+
+In the unit test, we are able to execute the performKeepup and fulfillRandomWords function ourselves so we don't really need to listen to the events since we know when it will be done.
+
+However in the actual testnet (Goerli) , the functions are called by the VRFCoordinator. However, we can't really predict when it will be called. Therefore, we need to add a listener to listen to the event fired.

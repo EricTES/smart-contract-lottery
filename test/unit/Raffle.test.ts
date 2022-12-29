@@ -5,7 +5,7 @@ import { developmentChain, networkConfig } from "../../helper-hardhat-config"
 
 !developmentChain.includes(network.name)
     ? describe.skip
-    : describe("Raffle", function () {
+    : describe("Raffle Unit Tests", function () {
           let raffle: Contract,
               vrfCoordinatorV2Mock: Contract,
               deployer: string,

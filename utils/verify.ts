@@ -1,11 +1,12 @@
-import hre, { ethers } from "hardhat"
+import hre, { ethers, run } from "hardhat"
 
 export const verify = async (address: string, args: any) => {
     const raffleContract = await ethers.getContract("Raffle")
+
     try {
         await hre.run("verify:verify", {
             address,
-            args,
+            constructorArguments: args,
         })
     } catch (e: any) {
         if (e.message.toLowerCase().includes("already verified")) {
