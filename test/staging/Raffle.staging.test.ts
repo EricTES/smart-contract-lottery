@@ -14,7 +14,7 @@ developmentChain.includes(network.name)
               entraceFee = await raffle.getEntranceFee()
           })
 
-          describe("fulfilleRandomWords", function () {
+          describe("fulfillRandomWords", function () {
               it("works with live Chainlink Keepers and Chainlink VRF, we get a random winner", async function () {
                   const startingTimeStamp = await raffle.getLatestTimeStamp()
                   const accounts = await ethers.getSigners()
@@ -30,14 +30,17 @@ developmentChain.includes(network.name)
                               const endingTimeStamp = await raffle.getLatestTimeStamp()
 
                               await expect(raffle.getPlayer(0)).to.be.reverted
-                              assert.equal(recentWinner.toString(), accounts[0].getAddress())
+                              assert.equal(recentWinner.toString(), accounts[0].address)
                               assert.equal(raffleState.toString(), "0")
-                              assert.equal(winnerEndingBalance.toString(), entraceFee.toString())
+                              assert.equal(
+                                    winnerEndingBalance.toString(),
+                                    winnerStartingBalance.add(entraceFee).toString()
+                                    )
                               assert(endingTimeStamp > startingTimeStamp)
                               resolve()
                           } catch (error) {
                               console.log(error)
-                              reject(error)
+                              reject(e)
                           }
                       })
 
