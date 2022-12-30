@@ -30,9 +30,12 @@ developmentChain.includes(network.name)
                               const endingTimeStamp = await raffle.getLatestTimeStamp()
 
                               await expect(raffle.getPlayer(0)).to.be.reverted
-                              assert.equal(recentWinner.toString(), accounts[0].getAddress())
+                              assert.equal(recentWinner.toString(), await accounts[0].getAddress())
                               assert.equal(raffleState.toString(), "0")
-                              assert.equal(winnerEndingBalance.toString(), entraceFee.toString())
+                              assert.equal(
+                                  winnerEndingBalance.toString(),
+                                  winnerStartingBalance.add(entraceFee).toString()
+                              )
                               assert(endingTimeStamp > startingTimeStamp)
                               resolve()
                           } catch (error) {
@@ -42,10 +45,11 @@ developmentChain.includes(network.name)
                       })
 
                       console.log("Entering Raffle...")
-                      const tx = await raffle.enterRaffle({ value: entraceFee })
-                      await tx.wait(1)
-                      console.log("Ok, time to wait...")
 
+                      const tx = await raffle.enterRaffle({ value: entraceFee })
+                      const txResponse = await tx.wait(1)
+
+                      console.log("Ok, time to wait...")
                       const winnerStartingBalance = await accounts[0].getBalance()
 
                       //this code wont complete until our listener has finished listening!
